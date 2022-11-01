@@ -108,11 +108,58 @@
             <section class="normal" id="section-">
 <div id="proposal" class="section level1 hasAnchor" number="2">
 <h1><span class="header-section-number">Chapter 2</span> Proposal<a href="proposal.html#proposal" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Recession is said to occur when there is constant fall in GDP of a country for two consecutive quarters. While some economists say when overall “economy” is not doing well. However, there are no specific factors to laid out which are defined to identify if a country is under recession. We want to propose a solution to this problem using EDA.Specifically, we want to use EDA on data available on years in which recession occurred and analyze co-relating factors contributing to the recession. (Specific to USA).In other words, we want to perform EDA to be able pinpoint specific factors which clearly indicates that a recession in going occur.</p>
 <div id="research-topic" class="section level2 hasAnchor" number="2.1">
 <h2><span class="header-section-number">2.1</span> Research topic<a href="proposal.html#research-topic" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Factors Contributing to a Recession</p>
 </div>
 <div id="data-availability" class="section level2 hasAnchor" number="2.2">
 <h2><span class="header-section-number">2.2</span> Data availability<a href="proposal.html#data-availability" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>For finding features contributing to recession we will be using different financial datasets combined together in which the target variable will represent the period of expansion or recession. For the target variable, the value “1” will represent a period of recession and the value “0” will represent a period of expansion. This time series is an interpretation of US Business Cycle Expansions and Contractions data provided by The National Bureau of Economic Research (NBER). The dataset has a frequency of a month.</p>
+<p>For identifying the possible features, we are using 6 different time series which will form the final dataset after combining all the time series together.</p>
+<ol style="list-style-type: decimal">
+<li>3 months Bill rate: This is a 3-Months Treasury Bill Secondary Market Rate.
+The dataset can be retrieved from FRED, Federal Reserve Bank of St. Louis.
+The source of the dataset is the Board of Governors of the Federal Reserve System (US).</li>
+</ol>
+<p>Update frequency: Monthly.</p>
+<p>Citation: Board of Governors of the Federal Reserve System (US), 3-Month Treasury Bill Secondary Market Rate, Discount Basis [TB3MS], retrieved from FRED, Federal Reserve Bank of St. Louis; <a href="https://fred.stlouisfed.org/series/TB3MS" class="uri">https://fred.stlouisfed.org/series/TB3MS</a>, October 30, 2022.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Capacity Utilization, Manufacturing: This is a Capacity Utilization of the manufacturing sector in the USA.
+The capacity utilization rate for a particular industry is equal to an output index divided by a capacity index. The Federal Reserve Board’s capacity indexes attempt to capture the concept of sustainable maximum output-the greatest level of output a plant can maintain within the framework of a realistic work schedule, after factoring in normal downtime and assuming sufficient availability of inputs to operate the capital in place.
+The dataset can be retrieved from FRED, Federal Reserve Bank of St. Louis.
+The source of the dataset is the Board of Governors of the Federal Reserve System (US).
+Update frequency: Monthly.</li>
+</ol>
+<p>Citation: Board of Governors of the Federal Reserve System (US), Capacity Utilization: Manufacturing (SIC) [CUMFNS], retrieved from FRED, Federal Reserve Bank of St. Louis; <a href="https://fred.stlouisfed.org/series/CUMFNS" class="uri">https://fred.stlouisfed.org/series/CUMFNS</a>, October 30, 2022.</p>
+<ol start="3" style="list-style-type: decimal">
+<li>Industrial Production: The industrial production (IP) index measures the real output of all relevant establishments located in the United States, regardless of their ownership, but not those located in U.S. territories.
+The dataset can be retrieved from FRED, Federal Reserve Bank of St. Louis.
+The source of the dataset is the Board of Governors of the Federal Reserve System (US).
+Update frequency: Monthly.</li>
+</ol>
+<p>Citation: Board of Governors of the Federal Reserve System (US), Industrial Production: Total Index [INDPRO], retrieved from FRED, Federal Reserve Bank of St. Louis; <a href="https://fred.stlouisfed.org/series/INDPRO" class="uri">https://fred.stlouisfed.org/series/INDPRO</a>, October 30, 2022.</p>
+<ol start="4" style="list-style-type: decimal">
+<li>CPI Index: is a measure of the average change over time in the prices paid by urban consumers for a market basket of consumer goods and services. Indexes are available for the U.S. and various geographic areas. Average price data for select utility, automotive fuel, and food items are also available.</li>
+</ol>
+<p>The dataset can be retrieved from FRED, Federal Reserve Bank of St. Louis.
+The source of the dataset is the Board of Governors of the Federal Reserve System (US).
+Update frequency: Monthly.</p>
+<p>Citation: U.S. Bureau of Labor Statistics, Consumer Price Index for All Urban Consumers: All Items in U.S. City Average [CPIAUCNS], retrieved from FRED, Federal Reserve Bank of St. Louis; <a href="https://fred.stlouisfed.org/series/CPIAUCNS" class="uri">https://fred.stlouisfed.org/series/CPIAUCNS</a>, October 30, 2022.</p>
+<ol start="5" style="list-style-type: decimal">
+<li>10 Years Rate: Averages of business days. For further information regarding treasury constant maturity data, please refer to the H.15 Statistical Release notes and the Treasury Yield Curve Methodology.</li>
+</ol>
+<p>The dataset can be retrieved from FRED the economic database of the Federal Reserve of St. Louis.</p>
+<p>The source of the dataset is the Board of Governors of the Federal Reserve System (US).
+Update frequency: Monthly.</p>
+<p>Citation: Board of Governors of the Federal Reserve System (US), Market Yield on U.S. Treasury Securities at 10-Year Constant Maturity, Quoted on an Investment Basis [GS10], retrieved from FRED, Federal Reserve Bank of St. Louis; <a href="https://fred.stlouisfed.org/series/GS10" class="uri">https://fred.stlouisfed.org/series/GS10</a>, October 30, 2022.</p>
+<ol start="6" style="list-style-type: decimal">
+<li>Unemployment Rate: The unemployment rate represents the number of unemployed as a percentage of the labor force. Labor force data are restricted to people 16 years of age and older, who currently reside in 1 of the 50 states or the District of Columbia, who do not reside in institutions (e.g., penal and mental facilities, homes for the aged), and who are not on active duty in the Armed Forces.
+The dataset can be retrieved from FRED.
+The source of the dataset is the U.S. Bureau of Labor Statistics.
+Update frequency: Monthly.</li>
+</ol>
+<p>Citation: Board of Governors of the Federal Reserve System (US), Industrial Production: Total Index [INDPRO], retrieved from FRED, Federal Reserve Bank of St. Louis; <a href="https://fred.stlouisfed.org/series/INDPRO" class="uri">https://fred.stlouisfed.org/series/INDPRO</a>, October 30, 2022.</p>
 
 </div>
 </div>
