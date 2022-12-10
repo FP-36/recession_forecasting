@@ -24,4 +24,4 @@ data <- merge(x = year_rate_10,
                                               y = merge(x = cpi_index, 
                                                         y = us_recession), by = 'DATE'), by = 'DATE'), by = 'DATE'), by = 'DATE'), by = 'DATE')
 which(is.na(data))
-write.csv(data, './recession_forecasting_data.csv')
+#write.csv(data, './recession_forecasting_data.csv')
