@@ -58,4 +58,12 @@ The dataset can be retrieved from FRED.
 The source of the dataset is the U.S. Bureau of Labor Statistics.
 Update frequency: Monthly.
 
-Citation: Board of Governors of the Federal Reserve System (US), Industrial Production: Total Index [INDPRO], retrieved from FRED, Federal Reserve Bank of St. Louis; https://fred.stlouisfed.org/series/INDPRO, October 30, 2022.
+Citation: U.S. Bureau of Labor Statistics, Unemployment Rate [UNRATE], retrieved from FRED, Federal Reserve Bank of St. Louis; https://fred.stlouisfed.org/series/UNRATE, December 9, 2022.
+
+7. Recession Indicator: This time series is an interpretation of US Business Cycle Expansions and Contractions data provided by The National Bureau of Economic Research (NBER). Our time series is composed of dummy variables that represent periods of expansion and recession. The NBER identifies months and quarters of turning points without designating a date within the period that turning points occurred. The dummy variable adopts an arbitrary convention that the turning point occurred at a specific date within the period. The arbitrary convention does not reflect any judgment on this issue by the NBER's Business Cycle Dating Committee. A value of 1 is a recessionary period, while a value of 0 is an expansionary period. For this time series, the recession begins the first day of the period following a peak and ends on the last day of the period of the trough.
+
+Citation: 
+Federal Reserve Bank of St. Louis, NBER based Recession Indicators for the United States from the Period following the Peak through the Trough [USREC], retrieved from FRED, Federal Reserve Bank of St. Louis; https://fred.stlouisfed.org/series/USREC, December 9, 2022.
+
+## References
+1. FRED economic data: https://fred.stlouisfed.org/series/
