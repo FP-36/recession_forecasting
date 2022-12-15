@@ -105,5 +105,8 @@ library(redav)
 
 plot_missing(data, percent = FALSE)
 
-
-ggplot(data, aes(USREC)) + geom_bar()
+library(forcats)
+x <- factor(data$USREC)  
+y <- fct_recode(x, Non-Recession ='0', Recession='1')  
+ggplot(data, aes(x)) + geom_bar() 
+x

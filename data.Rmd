@@ -52,6 +52,15 @@ which(is.na(data))
 Each dataframe have a common value named DATE on which we will merge, to do that as explained before we will inner join the frames using merge function that does it by default, since our initial data frames doesn't had NaN values, our resulting values is not showing signs of NaN or missing values. This can be shown in a graphical way in the following section.
 
 ## Missing value analysis
+```{r, echo=TRUE}
+install.packages("remotes")
+remotes::install_github("jtr13/redav")
+install.packages("redav")
+library(redav)
 
-
-
+plot_missing(data, percent = FALSE)
+```
+Notice that there are three parts in the plotted graph. 
+The top part shows the number of missing values in each column. 
+The middle part presents the missing patterns and the right part shows the counts for each missing patterns.
+If there had been any missing values, it would have been displayed in the middle part of the graph and the top part would have shown the number of those missing values and the right part would have shown the counts for each missing patterns. But our data set doesn't have any missing values so the graph is empty with num of rows missing and the row count of missing values being zero.

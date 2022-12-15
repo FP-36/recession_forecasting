@@ -1,1 +1,103 @@
 # Results
+```{r, echo=TRUE}
+library(ggplot2)
+library(GGally)
+library(tidyr)
+library(tidyverse)
+library(scales)  
+library(corrplot)
+```
+
+```{r, echo=TRUE}
+x <- factor(data$USREC) 
+ggplot(data, aes(x)) + 
+  geom_bar()+
+  ggtitle("Recession/ Non Recession Frequency") +  labs (x = "Recession", y = "Count")
+```
+```{r, echo=TRUE}
+df <- data[ -c(1) ]
+
+corrplot2 <- function(data,
+                      method = "pearson",
+                      sig.level = 0.05,
+                      order = "original",
+                      diag = FALSE,
+                      type = "upper",
+                      tl.srt = 90,
+                      number.font = 1,
+                      number.cex = 1,
+                      mar = c(0, 0, 0, 0)) {
+  data_incomplete <- data
+  data <- data[complete.cases(data), ]
+  mat <- cor(data, method = method)
+  cor.mtest <- function(mat, method) {
+    mat <- as.matrix(mat)
+    n <- ncol(mat)
+    p.mat <- matrix(NA, n, n)
+    diag(p.mat) <- 0
+    for (i in 1:(n - 1)) {
+      for (j in (i + 1):n) {
+        tmp <- cor.test(mat[, i], mat[, j], method = method)
+        p.mat[i, j] <- p.mat[j, i] <- tmp$p.value
+      }
+    }
+    colnames(p.mat) <- rownames(p.mat) <- colnames(mat)
+    p.mat
+  }
+  p.mat <- cor.mtest(data, method = method)
+  col <- colorRampPalette(c("#BB4444", "#EE9988", "#FFFFFF", "#77AADD", "#4477AA"))
+  corrplot(mat,
+           method = "color", col = col(200), number.font = number.font,
+           mar = mar, number.cex = number.cex,
+           type = type, order = order,
+           addCoef.col = "black", # add correlation coefficient
+           tl.col = "black", tl.srt = tl.srt, # rotation of text labels
+           # combine with significance level
+           p.mat = p.mat, sig.level = sig.level, insig = "blank",
+           # hide correlation coefficients on the diagonal
+           diag = diag
+  )
+}
+
+corrplot2(
+  data = df,
+  method = "pearson",
+  sig.level = 0.05,
+  order = "original",
+  diag = FALSE,
+  type = "upper",
+  tl.srt = 75
+)
+```
+
+```{r, echo=TRUE}
+
+```
+
+```{r, echo=TRUE}
+
+```
+
+```{r, echo=TRUE}
+
+```
+
+
+```{r, echo=TRUE}
+recession_dates <- filter(data, USREC == "1")
+
+recession_years <- unique(lubridate::year(as.Date(recession_dates$DATE)))
+
+data_copy <- data
+data_copy$USREC <- data_copy$USREC * 100
+data_copy$DATE <- lubridate::year(as.Date(data_copy$DATE))
+
+tidy_data <- data_copy %>% pivot_longer(cols = -c("DATE","USREC"), names_to = "Factors") |> mutate(Factors = forcats::fct_reorder2(Factors,DATE, value))
+
+ggp <- ggplot(tidy_data, aes(DATE, value, color = Factors)) +
+  geom_line() +
+  ggtitle("Factors and Recession Relation") +  labs (x = "", y = "Value") +
+  theme_grey(16) +
+  theme(legend.title = element_blank()) + scale_y_continuous(limits = c(0, 100,5)) 
+ggp +  geom_vline(xintercept = recession_years, alpha = 0.2) 
+```
