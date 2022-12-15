@@ -57,3 +57,17 @@ ggpairs(data,legend = 1,columns=2:7,aes(color= Recession, alpha = 0.4),
         lower = list(continuous = wrap("points", alpha = 0.3,    size=0.3), 
                      combo = wrap("dot", alpha = 0.4,            size=0.3) ), title = "Correlation Between factors") + 
   theme(legend.position = "right")
+
+
+#Time series
+ggplot(data_copy, 
+       aes(DATE, GS10)) + 
+  geom_line() 
+
+ggplot(data_copy, 
+       aes(DATE, UNRATE)) + 
+  geom_line() 
+
+ggplot(data_copy, 
+       aes(DATE, TB3MS)) + 
+  geom_line() 

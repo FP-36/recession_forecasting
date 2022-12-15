@@ -1,3 +1,59 @@
+--- 
+title: "Factors Contributing To Recession"
+author: "Jishan Desai, Sanket Bhandari, Shubham Bhalala"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+---
+--- 
+title: "Factors Contributing To Recession"
+author: "Jishan Desai, Sanket Bhandari, Shubham Bhalala"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+---
+```{r include=FALSE, cache=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE
+)
+```
+
+# Introduction
+
+
+<!--chapter:end:index.Rmd-->
+
+
+# Proposal
+
+Placeholder
+
+
+## Research topic
+## Data availability
+## References
+
+<!--chapter:end:proposal.Rmd-->
+
+
+# Data 
+
+Placeholder
+
+
+## Sources
+## Cleaning / transformation
+## Missing value analysis
+
+<!--chapter:end:data.Rmd-->
+
+```{r include=FALSE, cache=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE
+)
+```
 # Results
 ```{r, echo=TRUE}
 install.packages("devtools")
@@ -159,4 +215,32 @@ ggplot(data_copy,
 
 
 
+
+
+<!--chapter:end:results.Rmd-->
+
+```{r include=FALSE, cache=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE
+)
+```
+# Interactive component
+
+
+
+<!--chapter:end:interactive.Rmd-->
+
+```{r include=FALSE, cache=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE
+)
+```
+# Conclusion
+
+
+<!--chapter:end:conclusion.Rmd-->
 
