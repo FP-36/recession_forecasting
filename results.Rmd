@@ -6,6 +6,7 @@ library(tidyr)
 library(tidyverse)
 library(scales)  
 library(corrplot)
+
 ```
 
 ```{r, echo=TRUE}
@@ -66,16 +67,24 @@ corrplot2(
   order = "original",
   diag = FALSE,
   type = "upper",
-  tl.srt = 75
-)
+  tl.srt = 75,
+  ) 
 ```
 
 ```{r, echo=TRUE}
-
+Recession <- as.factor(data$USREC)
+ggpairs(data,legend = 1,columns=2:7,aes(color= Recession, alpha = 0.4),
+        upper = list(continuous = "blank", combo = "box_no_facet"),
+        lower = list(continuous = wrap("points", alpha = 0.3,    size=0.3), 
+                     combo = wrap("dot", alpha = 0.4,            size=0.3) ), title = "Correlation Between factors") + 
+  theme(legend.position = "right")
 ```
 
 ```{r, echo=TRUE}
-
+ggparcoord(data, columns = 2:8, groupColumn=8, alphaLines = .1, scale = "uniminmax", 
+           mapping=aes(color=as.factor(USREC)))+
+  scale_color_discrete("USREC")+
+  ggtitle("Parallel plot of different variables") 
 ```
 
 ```{r, echo=TRUE}
