@@ -201,15 +201,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 18: plyr       (1.8.7 -&gt; 1.8.8) [CRAN]
 ## 
 ##   
-   checking for file ‘/private/var/folders/gl/gc9370p92px37cdb3gs2xdrc0000gn/T/RtmpshbBiw/remotes8d3496abe22/ggobi-ggally-4d8fa81/DESCRIPTION’ ...
+   checking for file ‘/private/var/folders/gl/gc9370p92px37cdb3gs2xdrc0000gn/T/RtmpshbBiw/remotes8d353cdfa3f/ggobi-ggally-4d8fa81/DESCRIPTION’ ...
   
-✔  checking for file ‘/private/var/folders/gl/gc9370p92px37cdb3gs2xdrc0000gn/T/RtmpshbBiw/remotes8d3496abe22/ggobi-ggally-4d8fa81/DESCRIPTION’
+✔  checking for file ‘/private/var/folders/gl/gc9370p92px37cdb3gs2xdrc0000gn/T/RtmpshbBiw/remotes8d353cdfa3f/ggobi-ggally-4d8fa81/DESCRIPTION’
 ## 
   
 ─  preparing ‘GGally’:
-## 
-  
-   checking DESCRIPTION meta-information ...
+##    checking DESCRIPTION meta-information ...
   
 ✔  checking DESCRIPTION meta-information
 ## 
@@ -246,7 +244,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb32-2"><a href="results.html#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(x)) <span class="sc">+</span> </span>
 <span id="cb32-3"><a href="results.html#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()<span class="sc">+</span></span>
 <span id="cb32-4"><a href="results.html#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Recession/ Non Recession Frequency&quot;</span>) <span class="sc">+</span>  <span class="fu">labs</span> (<span class="at">x =</span> <span class="st">&quot;Recession&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Count&quot;</span>)</span></code></pre></div>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-8-1.png" width="672" />
+To get an idea about the distribution of the target variable, i.e., USREC (US Recession), we decided to plot a bar plot of the same. The graph makes it clear that the data set is unbalanced. There are more than 100 data points with USREC= 1 and around 700 with USREC= 0. This graph indicates that while training a predictive model, we’ll need to do oversampling or undersampling to make the dataset balanced for training and prediction.</p>
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="results.html#cb33-1" aria-hidden="true" tabindex="-1"></a>Recession <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data<span class="sc">$</span>USREC)</span>
 <span id="cb33-2"><a href="results.html#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggpairs</span>(data,<span class="at">legend =</span> <span class="dv">1</span>,<span class="at">columns=</span><span class="dv">2</span><span class="sc">:</span><span class="dv">7</span>,<span class="fu">aes</span>(<span class="at">color=</span> Recession, <span class="at">alpha =</span> <span class="fl">0.4</span>),</span>
 <span id="cb33-3"><a href="results.html#cb33-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">upper =</span> <span class="fu">list</span>(<span class="at">continuous =</span> <span class="st">&quot;blank&quot;</span>, <span class="at">combo =</span> <span class="st">&quot;box_no_facet&quot;</span>),</span>
@@ -312,7 +311,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb35-2"><a href="results.html#cb35-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">mapping=</span><span class="fu">aes</span>(<span class="at">color=</span><span class="fu">as.factor</span>(USREC)))<span class="sc">+</span></span>
 <span id="cb35-3"><a href="results.html#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_discrete</span>(<span class="st">&quot;USREC&quot;</span>)<span class="sc">+</span></span>
 <span id="cb35-4"><a href="results.html#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Parallel plot of different variables&quot;</span>) </span></code></pre></div>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-11-1.png" width="672" />
+To compare multiple variables or features simultaneously, we are using parallel plots which gives a quick and intuitive comparison of the relationships between the different variables. The first observation points towards unbalnced nature of the datset that there are a lot more red lines than blue lines.
+USREC is the target variable hence it has only two values 0 and 1.
+This parallel plot shows that the features ‘UNRATE’ and ‘CUMFNS’ are negatively correlated.
+‘INDPRO’ and ‘CPIAUCNS’ are positively correlated as there are parallel lines in between them.
+Also the correlation between other variables which are not adjacent to each other in parallel plot can be further examined using pairplot or correlation plot.</p>
 <div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="results.html#cb36-1" aria-hidden="true" tabindex="-1"></a>recession_dates <span class="ot">&lt;-</span> <span class="fu">filter</span>(data, USREC <span class="sc">==</span> <span class="st">&quot;1&quot;</span>)</span>
 <span id="cb36-2"><a href="results.html#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb36-3"><a href="results.html#cb36-3" aria-hidden="true" tabindex="-1"></a>recession_years <span class="ot">&lt;-</span> <span class="fu">unique</span>(lubridate<span class="sc">::</span><span class="fu">year</span>(<span class="fu">as.Date</span>(recession_dates<span class="sc">$</span>DATE)))</span>
@@ -329,7 +333,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb36-14"><a href="results.html#cb36-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_grey</span>(<span class="dv">16</span>) <span class="sc">+</span></span>
 <span id="cb36-15"><a href="results.html#cb36-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.title =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>,<span class="dv">5</span>)) </span>
 <span id="cb36-16"><a href="results.html#cb36-16" aria-hidden="true" tabindex="-1"></a>ggp <span class="sc">+</span>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> recession_years, <span class="at">alpha =</span> <span class="fl">0.2</span>) </span></code></pre></div>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-13-1.png" width="672" />
+Till now, we were able to figure out the relationships between the factors which may potentially be responsible for the recession. With the help of this time series, we will attempt to identify if there is a pattern between features and recession. To identify this, we have plotted a time series graph over a series of years and there is a vertical line on the years during which there was recession.</p>
+<p>One clear feature is CUMFNS which decreases during recession years because whenever there is a vertical line indicating a recession the CUMFNS is decreasing.This logically makes sense because CUMFNS stands capacity utilization which ideally should reduce during a recession.</p>
+<p>Second clear feature is INDPRO stands for Industrial Production. Over the years it has increased but during the recession years it has dropped (on vertical lines, it decreases).</p>
+<p>Since we cannot conclude much for the Factors GS10, UNRATE and TB3MS, we analyze them next using three different time series.</p>
 <div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="results.html#cb37-1" aria-hidden="true" tabindex="-1"></a>recession_dates <span class="ot">&lt;-</span> <span class="fu">filter</span>(data, USREC <span class="sc">==</span> <span class="st">&quot;1&quot;</span>)</span>
 <span id="cb37-2"><a href="results.html#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb37-3"><a href="results.html#cb37-3" aria-hidden="true" tabindex="-1"></a>recession_years <span class="ot">&lt;-</span> <span class="fu">unique</span>(lubridate<span class="sc">::</span><span class="fu">year</span>(<span class="fu">as.Date</span>(recession_dates<span class="sc">$</span>DATE)))</span>
@@ -338,17 +346,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb37-6"><a href="results.html#cb37-6" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(DATE, GS10)) <span class="sc">+</span> </span>
 <span id="cb37-7"><a href="results.html#cb37-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
 <span id="cb37-8"><a href="results.html#cb37-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Year Rate from 1950 to 2022&quot;</span>)<span class="sc">+</span>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> recession_years, <span class="at">alpha =</span> <span class="fl">0.2</span>) </span></code></pre></div>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-14-1.png" width="672" />
+GS10 is market yield on security at 10 years. Intuitively, it should decrease during recession. This hypothesis is weakly supported by the graph as in general during recession years the GS10 goes down. However, it is not always the case from the time series. There are instances where the rate drops but it is not classified as recession, and there are few drops which are not that huge but that has happened during recession. So, overall this time-series is not much helpful for GS10 study and recession. However, we can use correlation graphs made earlier to find an indirect relation and use that instead of GS10. We talk more about this in the conclusion section.</p>
 <div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="results.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_copy, </span>
 <span id="cb38-2"><a href="results.html#cb38-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(DATE, UNRATE)) <span class="sc">+</span> </span>
 <span id="cb38-3"><a href="results.html#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
 <span id="cb38-4"><a href="results.html#cb38-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Unemployment rate from 1950 to 2022&quot;</span>)<span class="sc">+</span><span class="fu">geom_vline</span>(<span class="at">xintercept =</span> recession_years, <span class="at">alpha =</span> <span class="fl">0.2</span>) </span></code></pre></div>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-15-1.png" width="672" />
+It can be deciphered that Unemployment and Recession go hand in hand because whenever there is rising unemployment there is a recession. Another important thing to notice is after a recession the drop in the unemployment rate is slow. However, during recession years there is a sudden increase. For instance, years leading to 1970 have a dropping unemployment rate and then in 1970 there is a sudden increase. This pattern repeats during every recession year(s) another notable instance is the period right before 2010.</p>
 <div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="results.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_copy, </span>
 <span id="cb39-2"><a href="results.html#cb39-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(DATE, TB3MS)) <span class="sc">+</span> </span>
 <span id="cb39-3"><a href="results.html#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span><span class="fu">geom_vline</span>(<span class="at">xintercept =</span> recession_years, <span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
 <span id="cb39-4"><a href="results.html#cb39-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Months bill from 1950 to 2022&quot;</span>)</span></code></pre></div>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-16-1.png" width="672" />
+We can see a weak relation between Monthly bills and recession. In general it appears that whenever there is a sudden drop in monthly bills value by high numbers, then there happens to be a recession. Although there are drops in years where there is no recession, the amount of drop during recession years is significant. So, if there is a significant drop over a very short time, there are chances of that time being a recession. However, this is a weak relationship because there are years where bills have increased during recession. One of the possible reasons for this discrepancy is the vertical lines are made based on x-intercepts which are discrete variables as it is year. However, the time series is actually based on dates so there are multiple points for the same year. So, if there is some pattern we cannot really identify that. For this reason, we say that this is a weak relation.</p>
 
 </div>
             </section>
