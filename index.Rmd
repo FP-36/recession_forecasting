@@ -7,3 +7,6 @@ site: bookdown::bookdown_site
 
 # Introduction
 
+A recession is a period of economic decline, typically characterized by a decrease in the gross domestic product (GDP), a high unemployment rate, and a drop in the stock market. Various factors, including a downturn in the housing market, a decline in consumer spending, a decrease in business investment, or a drop in exports, can cause recessions. Other factors contributing to a recession include rising interest rates, political instability, and natural disasters. Recessions can significantly impact individuals, businesses, and the overall economy, and they can last for several months or even years. Governments and central banks may implement various policies to mitigate the effects of a recession and stimulate economic growth.
+
+As the world is in fear of going into recession, we are trying to predict a period of recession based on Federal Reserve Economic Data. After doing some research, we came up with six critical recession indicators: 3 months Bill rate, Capacity Utilization, Manufacturing, Industrial Production, CPI Index, 10 Years Rate, and Unemployment Rate. The project aims to examine how the change in these factors has resulted in recessions in the past and, based on that, try to find a correlation between these variables, which will, in turn, help predict the future possibility of a recession.

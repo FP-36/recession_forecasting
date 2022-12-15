@@ -20,6 +20,7 @@ ggplot(data, aes(x)) +
   geom_bar()+
   ggtitle("Recession/ Non Recession Frequency") +  labs (x = "Recession", y = "Count")
 ```
+To get an idea about the distribution of the target variable, i.e., USREC (US Recession), we decided to plot a bar plot of the same. The graph makes it clear that the data set is unbalanced. There are more than 100 data points with USREC= 1 and around 700 with USREC= 0. This graph indicates that while training a predictive model, we'll need to do oversampling or undersampling to make the dataset balanced for training and prediction.
 
 ```{r, echo=TRUE}
 Recession <- as.factor(data$USREC)
@@ -99,6 +100,13 @@ ggparcoord(data, columns = 2:8, groupColumn=8, alphaLines = .1, scale = "uniminm
   scale_color_discrete("USREC")+
   ggtitle("Parallel plot of different variables") 
 ```
+To compare multiple variables or features simultaneously, we are using parallel plots which gives a quick and intuitive comparison of the relationships between the different variables. The first observation points towards unbalnced nature of the datset that there are a lot more red lines than blue lines.
+USREC is the target variable hence it has only two values 0 and 1.
+This parallel plot shows that the features 'UNRATE' and 'CUMFNS' are negatively correlated.
+'INDPRO' and 'CPIAUCNS' are positively correlated as there are parallel lines in between them.
+Also the correlation between other variables which are not adjacent to each other in parallel plot can be further examined using pairplot or correlation plot.
+
+
 
 ```{r, echo=TRUE}
 
@@ -123,6 +131,19 @@ ggp <- ggplot(tidy_data, aes(DATE, value, color = Factors)) +
   theme(legend.title = element_blank()) + scale_y_continuous(limits = c(0, 100,5)) 
 ggp +  geom_vline(xintercept = recession_years, alpha = 0.2) 
 ```
+Till now, we were able to figure out the relationships between the factors which may potentially be responsible for the recession. With the help of this time series, we will attempt to identify if there is a pattern between features and recession. To identify this, we have plotted a time series graph over a series of years and there is a vertical line on the years during which there was recession.
+
+ One clear feature is CUMFNS which decreases during recession years because whenever there is a vertical line indicating a recession the CUMFNS is decreasing.This logically makes sense because CUMFNS stands capacity utilization which ideally  should reduce during a recession.
+
+Second clear feature is INDPRO stands for Industrial Production. Over the years it has increased but during the recession years it has dropped (on vertical lines, it decreases). 
+
+Since we cannot conclude much for the Factors GS10, UNRATE and TB3MS, we analyze them next using three different time series.
+
+
+
+
+
+
 ```{r, echo=TRUE}
 recession_dates <- filter(data, USREC == "1")
 
@@ -135,6 +156,7 @@ ggplot(data_copy,
 
 
 ```
+GS10 is market yield  on security at 10 years. Intuitively, it should  decrease during recession. This hypothesis is weakly supported by the graph as in general during recession years the GS10 goes down. However, it is not always the case from the time series. There are instances where the rate drops but it is not classified as recession, and there are few drops which are not that huge but that has happened during recession. So, overall this time-series is not much helpful for GS10 study and recession. However, we can use correlation graphs made earlier to find an indirect relation and use that instead of GS10. We talk more about this in the conclusion section. 
 
 ```{r, echo=TRUE}
 ggplot(data_copy, 
@@ -145,6 +167,7 @@ ggplot(data_copy,
 
 
 ```
+It can be deciphered that Unemployment and Recession go hand in hand because whenever there is  rising unemployment there is a recession. Another important thing to notice is after a recession the drop in the unemployment rate is slow. However, during recession years there is a sudden increase. For instance, years leading to 1970 have a dropping unemployment rate and then in 1970 there is a sudden increase. This pattern repeats during every recession year(s) another notable instance is the period right before 2010. 
 
 ```{r, echo=TRUE}
 ggplot(data_copy, 
@@ -152,7 +175,7 @@ ggplot(data_copy,
   geom_line() +geom_vline(xintercept = recession_years, alpha = 0.2) +
   ggtitle("Months bill from 1950 to 2022")
 ```
-
+We can see a weak relation between Monthly bills and recession. In general it appears that whenever there is a sudden drop in monthly bills value by high numbers, then there happens to be a recession. Although there are drops in years where there is no recession, the amount of drop during recession years is significant. So, if there is a significant drop over a very short time, there are chances of that time being a recession. However, this is a weak relationship because there are years where bills have increased during recession. One of the possible reasons for this discrepancy is the vertical lines are made based on x-intercepts which are discrete variables as it is year. However, the time series is actually based on dates so there are multiple points for the same year. So, if there is some pattern we cannot really identify that. For this reason, we say that this is a weak relation.
 ```{r, echo=TRUE}
 
 ```
