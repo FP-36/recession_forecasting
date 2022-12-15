@@ -110,3 +110,35 @@ ggp <- ggplot(tidy_data, aes(DATE, value, color = Factors)) +
   theme(legend.title = element_blank()) + scale_y_continuous(limits = c(0, 100,5)) 
 ggp +  geom_vline(xintercept = recession_years, alpha = 0.2) 
 ```
+```{r, echo=TRUE}
+ggplot(data_copy, 
+       aes(DATE, GS10)) + 
+  geom_line() +
+  ggtitle("Year Rate from 1950 to 2022")
+
+
+```
+
+```{r, echo=TRUE}
+ggplot(data_copy, 
+       aes(DATE, UNRATE)) + 
+  geom_line() +
+  ggtitle("Unemployment rate from 1950 to 2022")
+
+
+```
+
+```{r, echo=TRUE}
+ggplot(data_copy, 
+       aes(DATE, TB3MS)) + 
+  geom_line() +
+  ggtitle("Months bill from 1950 to 2022")
+```
+
+```{r, echo=TRUE}
+
+```
+
+
+
+
