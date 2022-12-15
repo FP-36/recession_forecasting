@@ -1,5 +1,9 @@
 # Results
 ```{r, echo=TRUE}
+library(devtools)
+install_github("ggobi/ggally")
+install.packages("GGally")
+install.packages("corrplot")
 library(ggplot2)
 library(GGally)
 library(tidyr)
