@@ -1,5 +1,6 @@
 # Data 
 As discussed before we will be merging 7 different dataset into and 8'th one being our target variable recession the final dataset will not be of the same size as of the biggest one because each individual dataframe doesn't have same range of dates which is the common feature between all of them based upon which we will merge the data into one. The most logical join for this problem will be to use the inner join that will keep the date column common to each one of then and accordingly append the other columns of the dataset. To do this in R programming language we will have to use the function merge which by default does inner join moreover out of many available ways we have chosen to do that using nested merge.
+
 ## Sources
 We have used all the datasets downloaded from FRED (Federal Reserve Economic Data) with an average of monthly update on their dataset. 
 
