@@ -19,7 +19,7 @@ We have used all the datasets downloaded from FRED (Federal Reserve Economic Dat
 7. Recession Indicator: https://fred.stlouisfed.org/series/USREC
 
 ## Cleaning / transformation
-```{r}
+```{r, echo=TRUE}
 months_bill <- read.csv('./TB3MS.csv')
 capacity_utilization <- read.csv('./CUMFNS.csv')
 industrial_prod <- read.csv('./INDPRO.csv')
