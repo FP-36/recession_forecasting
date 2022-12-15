@@ -4,6 +4,8 @@ research-topic
 data-availability
 references
 data
+cleaning-transformation
+missing-value-analysis
 results
 interactive-component
 conclusion

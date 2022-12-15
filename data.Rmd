@@ -16,6 +16,7 @@ We have used all the datasets downloaded from FRED (Federal Reserve Economic Dat
 6. Unemployment Rate: https://fred.stlouisfed.org/series/UNRATE
 
 7. Recession Indicator: https://fred.stlouisfed.org/series/USREC
+
 ## Cleaning / transformation
 ```{r}
 months_bill <- read.csv('./TB3MS.csv')
@@ -46,7 +47,9 @@ data <- merge(x = year_rate_10,
 which(is.na(data))
 #write.csv(data, './recession_forecasting_data.csv')
 ```
+
 Each dataframe have a common value named DATE on which we will merge, to do that as explained before we will inner join the frames using merge function that does it by default, since our initial data frames doesn't had NaN values, our resulting values is not showing signs of NaN or missing values. This can be shown in a graphical way in the following section.
+
 ## Missing value analysis
 
 

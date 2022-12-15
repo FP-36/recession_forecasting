@@ -79,7 +79,11 @@
 <li class="chapter" data-level="2.2" data-path="proposal.html"><a href="proposal.html#data-availability"><i class="fa fa-check"></i><b>2.2</b> Data availability</a></li>
 <li class="chapter" data-level="2.3" data-path="proposal.html"><a href="proposal.html#references"><i class="fa fa-check"></i><b>2.3</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>3</b> Data</a></li>
+<li class="chapter" data-level="3" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>3</b> Data</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="data.html"><a href="data.html#cleaning-transformation"><i class="fa fa-check"></i><b>3.1</b> Cleaning / transformation</a></li>
+<li class="chapter" data-level="3.2" data-path="data.html"><a href="data.html#missing-value-analysis"><i class="fa fa-check"></i><b>3.2</b> Missing value analysis</a></li>
+</ul></li>
 <li class="chapter" data-level="4" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>4</b> Results</a></li>
 <li class="chapter" data-level="5" data-path="interactive-component.html"><a href="interactive-component.html"><i class="fa fa-check"></i><b>5</b> Interactive component</a></li>
 <li class="chapter" data-level="6" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>6</b> Conclusion</a></li>
@@ -114,9 +118,10 @@ We have used all the datasets downloaded from FRED (Federal Reserve Economic Dat
 <li><p>CPI Index: <a href="https://fred.stlouisfed.org/series/CPIAUCNS" class="uri">https://fred.stlouisfed.org/series/CPIAUCNS</a></p></li>
 <li><p>10 Years Rate: <a href="https://fred.stlouisfed.org/series/GS10" class="uri">https://fred.stlouisfed.org/series/GS10</a></p></li>
 <li><p>Unemployment Rate: <a href="https://fred.stlouisfed.org/series/UNRATE" class="uri">https://fred.stlouisfed.org/series/UNRATE</a></p></li>
-<li><p>Recession Indicator: <a href="https://fred.stlouisfed.org/series/USREC" class="uri">https://fred.stlouisfed.org/series/USREC</a>
-## Cleaning / transformation</p></li>
+<li><p>Recession Indicator: <a href="https://fred.stlouisfed.org/series/USREC" class="uri">https://fred.stlouisfed.org/series/USREC</a></p></li>
 </ol>
+<div id="cleaning-transformation" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Cleaning / transformation<a href="data.html#cleaning-transformation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <pre><code>## [1] &quot;DATE&quot;  &quot;TB3MS&quot;</code></pre>
 <pre><code>## [1] &quot;DATE&quot;   &quot;CUMFNS&quot;</code></pre>
 <pre><code>## [1] &quot;DATE&quot;   &quot;INDPRO&quot;</code></pre>
@@ -125,9 +130,12 @@ We have used all the datasets downloaded from FRED (Federal Reserve Economic Dat
 <pre><code>## [1] &quot;DATE&quot;   &quot;UNRATE&quot;</code></pre>
 <pre><code>## [1] &quot;DATE&quot;  &quot;USREC&quot;</code></pre>
 <pre><code>## integer(0)</code></pre>
-<p>Each dataframe have a common value named DATE on which we will merge, to do that as explained before we will inner join the frames using merge function that does it by default, since our initial data frames doesn’t had NaN values, our resulting values is not showing signs of NaN or missing values. This can be shown in a graphical way in the following section.
-## Missing value analysis</p>
+<p>Each dataframe have a common value named DATE on which we will merge, to do that as explained before we will inner join the frames using merge function that does it by default, since our initial data frames doesn’t had NaN values, our resulting values is not showing signs of NaN or missing values. This can be shown in a graphical way in the following section.</p>
+</div>
+<div id="missing-value-analysis" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Missing value analysis<a href="data.html#missing-value-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 
+</div>
 </div>
             </section>
 
