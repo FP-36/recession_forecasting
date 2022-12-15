@@ -6,6 +6,7 @@
 
 Factors Contributing to a Recession
 
+
 ## Data availability
 
 For finding features contributing to recession we will be using different financial datasets combined together in which the target variable will represent the period of expansion or recession. For the target variable, the value “1” will represent a period of recession and the value “0” will represent a period of expansion. This time series is an interpretation of US Business Cycle Expansions and Contractions data provided by The National Bureau of Economic Research (NBER). The dataset has a frequency of a month. 

@@ -23,7 +23,7 @@
 <meta name="author" content="Jishan Desai, Sanket Bhandari, Shubham Bhalala" />
 
 
-<meta name="date" content="2022-12-10" />
+<meta name="date" content="2022-12-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -79,12 +79,7 @@
 <li class="chapter" data-level="2.2" data-path="proposal.html"><a href="proposal.html#data-availability"><i class="fa fa-check"></i><b>2.2</b> Data availability</a></li>
 <li class="chapter" data-level="2.3" data-path="proposal.html"><a href="proposal.html#references"><i class="fa fa-check"></i><b>2.3</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>3</b> Data</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="data.html"><a href="data.html#sources"><i class="fa fa-check"></i><b>3.1</b> Sources</a></li>
-<li class="chapter" data-level="3.2" data-path="data.html"><a href="data.html#cleaning-transformation"><i class="fa fa-check"></i><b>3.2</b> Cleaning / transformation</a></li>
-<li class="chapter" data-level="3.3" data-path="data.html"><a href="data.html#missing-value-analysis"><i class="fa fa-check"></i><b>3.3</b> Missing value analysis</a></li>
-</ul></li>
+<li class="chapter" data-level="3" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>3</b> Data</a></li>
 <li class="chapter" data-level="4" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>4</b> Results</a></li>
 <li class="chapter" data-level="5" data-path="interactive-component.html"><a href="interactive-component.html"><i class="fa fa-check"></i><b>5</b> Interactive component</a></li>
 <li class="chapter" data-level="6" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>6</b> Conclusion</a></li>
@@ -109,16 +104,30 @@
             <section class="normal" id="section-">
 <div id="data" class="section level1 hasAnchor" number="3">
 <h1><span class="header-section-number">Chapter 3</span> Data<a href="data.html#data" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="sources" class="section level2 hasAnchor" number="3.1">
-<h2><span class="header-section-number">3.1</span> Sources<a href="data.html#sources" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-</div>
-<div id="cleaning-transformation" class="section level2 hasAnchor" number="3.2">
-<h2><span class="header-section-number">3.2</span> Cleaning / transformation<a href="data.html#cleaning-transformation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-</div>
-<div id="missing-value-analysis" class="section level2 hasAnchor" number="3.3">
-<h2><span class="header-section-number">3.3</span> Missing value analysis<a href="data.html#missing-value-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>As discussed before we will be merging 7 different dataset into and 8’th one being our target variable recession the final dataset will not be of the same size as of the biggest one because each individual dataframe doesn’t have same range of dates which is the common feature between all of them based upon which we will merge the data into one. The most logical join for this problem will be to use the inner join that will keep the date column common to each one of then and accordingly append the other columns of the dataset. To do this in R programming language we will have to use the function merge which by default does inner join moreover out of many available ways we have chosen to do that using nested merge.
+## Sources
+We have used all the datasets downloaded from FRED (Federal Reserve Economic Data) with an average of monthly update on their dataset.</p>
+<ol style="list-style-type: decimal">
+<li><p>3 months Bill rate: <a href="https://fred.stlouisfed.org/series/TB3MS" class="uri">https://fred.stlouisfed.org/series/TB3MS</a></p></li>
+<li><p>Capacity Utilization, Manufacturing: <a href="https://fred.stlouisfed.org/series/CUMFNS" class="uri">https://fred.stlouisfed.org/series/CUMFNS</a></p></li>
+<li><p>Industrial Production: <a href="https://fred.stlouisfed.org/series/INDPRO" class="uri">https://fred.stlouisfed.org/series/INDPRO</a></p></li>
+<li><p>CPI Index: <a href="https://fred.stlouisfed.org/series/CPIAUCNS" class="uri">https://fred.stlouisfed.org/series/CPIAUCNS</a></p></li>
+<li><p>10 Years Rate: <a href="https://fred.stlouisfed.org/series/GS10" class="uri">https://fred.stlouisfed.org/series/GS10</a></p></li>
+<li><p>Unemployment Rate: <a href="https://fred.stlouisfed.org/series/UNRATE" class="uri">https://fred.stlouisfed.org/series/UNRATE</a></p></li>
+<li><p>Recession Indicator: <a href="https://fred.stlouisfed.org/series/USREC" class="uri">https://fred.stlouisfed.org/series/USREC</a>
+## Cleaning / transformation</p></li>
+</ol>
+<pre><code>## [1] &quot;DATE&quot;  &quot;TB3MS&quot;</code></pre>
+<pre><code>## [1] &quot;DATE&quot;   &quot;CUMFNS&quot;</code></pre>
+<pre><code>## [1] &quot;DATE&quot;   &quot;INDPRO&quot;</code></pre>
+<pre><code>## [1] &quot;DATE&quot;     &quot;CPIAUCNS&quot;</code></pre>
+<pre><code>## [1] &quot;DATE&quot; &quot;GS10&quot;</code></pre>
+<pre><code>## [1] &quot;DATE&quot;   &quot;UNRATE&quot;</code></pre>
+<pre><code>## [1] &quot;DATE&quot;  &quot;USREC&quot;</code></pre>
+<pre><code>## integer(0)</code></pre>
+<p>Each dataframe have a common value named DATE on which we will merge, to do that as explained before we will inner join the frames using merge function that does it by default, since our initial data frames doesn’t had NaN values, our resulting values is not showing signs of NaN or missing values. This can be shown in a graphical way in the following section.
+## Missing value analysis</p>
 
-</div>
 </div>
             </section>
 

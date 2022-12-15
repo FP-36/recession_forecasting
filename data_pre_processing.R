@@ -25,3 +25,5 @@ data <- merge(x = year_rate_10,
                                                         y = us_recession), by = 'DATE'), by = 'DATE'), by = 'DATE'), by = 'DATE'), by = 'DATE')
 which(is.na(data))
 #write.csv(data, './recession_forecasting_data.csv')
+
+

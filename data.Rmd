@@ -1,8 +1,53 @@
 # Data 
-
+As discussed before we will be merging 7 different dataset into and 8'th one being our target variable recession the final dataset will not be of the same size as of the biggest one because each individual dataframe doesn't have same range of dates which is the common feature between all of them based upon which we will merge the data into one. The most logical join for this problem will be to use the inner join that will keep the date column common to each one of then and accordingly append the other columns of the dataset. To do this in R programming language we will have to use the function merge which by default does inner join moreover out of many available ways we have chosen to do that using nested merge.
 ## Sources
+We have used all the datasets downloaded from FRED (Federal Reserve Economic Data) with an average of monthly update on their dataset. 
 
+1. 3 months Bill rate: https://fred.stlouisfed.org/series/TB3MS
+
+2. Capacity Utilization, Manufacturing: https://fred.stlouisfed.org/series/CUMFNS
+
+3. Industrial Production: https://fred.stlouisfed.org/series/INDPRO
+
+4. CPI Index: https://fred.stlouisfed.org/series/CPIAUCNS
+
+5. 10 Years Rate: https://fred.stlouisfed.org/series/GS10
+
+6. Unemployment Rate: https://fred.stlouisfed.org/series/UNRATE
+
+7. Recession Indicator: https://fred.stlouisfed.org/series/USREC
 ## Cleaning / transformation
+```{r}
+months_bill <- read.csv('./TB3MS.csv')
+capacity_utilization <- read.csv('./CUMFNS.csv')
+industrial_prod <- read.csv('./INDPRO.csv')
+cpi_index <- read.csv('./CPIAUCNS.csv')
+year_rate_10 <- read.csv('./GS10.csv')
+unemployment_rate <- read.csv('./UNRATE.csv')
+us_recession <- read.csv('./USREC.csv')
 
+colnames(months_bill)
+colnames(capacity_utilization)
+colnames(industrial_prod)
+colnames(cpi_index)
+colnames(year_rate_10)
+colnames(unemployment_rate)
+colnames(us_recession)
+
+#All have common col called DATE, and since our target variable is recession we have to get data filtered according to the available DATE in recession table.
+
+data <- merge(x = year_rate_10, 
+      y = merge(x = unemployment_rate, 
+                y = merge(x = capacity_utilization, 
+                          y = merge(x = months_bill, 
+                                    y = merge(x = industrial_prod, 
+                                              y = merge(x = cpi_index, 
+                                                        y = us_recession), by = 'DATE'), by = 'DATE'), by = 'DATE'), by = 'DATE'), by = 'DATE')
+which(is.na(data))
+#write.csv(data, './recession_forecasting_data.csv')
+```
+Each dataframe have a common value named DATE on which we will merge, to do that as explained before we will inner join the frames using merge function that does it by default, since our initial data frames doesn't had NaN values, our resulting values is not showing signs of NaN or missing values. This can be shown in a graphical way in the following section.
 ## Missing value analysis
+
+
 
