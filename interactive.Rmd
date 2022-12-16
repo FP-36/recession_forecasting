@@ -1,6 +1,13 @@
 # Interactive component
 
-https://vizhub.com/shubhambhalala/63d57ecbf5ab4ae2aa7b8b03f4e3869a
+## D3.js
 
+D3.js (short for Data-Driven Documents) is a JavaScript library for creating dynamic, interactive data visualizations in web browsers. It uses web standards such as HTML, CSS, and SVG to create visualizations, which can be manipulated through code using the D3 library.
 
-<iframe width="700" height="500" src="https://vizhub.com/shubhambhalala/63d57ecbf5ab4ae2aa7b8b03f4e3869a?mode=embed" title="Recession Graph" frameborder="0" ></iframe>
+D3 is particularly powerful for manipulating and rendering data as graphics, making it well-suited for data visualization tasks such as creating charts, plots, and maps. It can handle large datasets efficiently and can bind data to the Document Object Model (DOM), allowing for interactive visualizations that can be updated in real-time as the data changes.
+
+D3 is often used in combination with other libraries and frameworks, such as Angular, React, and Vue.js, to create interactive and complex visualizations in web applications. It is widely used by data scientists, statisticians, and developers to create rich, interactive visualizations of data.
+
+## Interactive Graph
+
+[Link to VizHub visualization](https://vizhub.com/shubhambhalala/63d57ecbf5ab4ae2aa7b8b03f4e3869a), here is the link to the visualization created using d3.js and hosted on VizHub. You can scroll down a bit to find two buttons named "Next Year" & "Previous Year" wherein the actions are designed. On clicking Next Year if there was recession in the respective year a bar would appear in a transitive motion with a color change. 

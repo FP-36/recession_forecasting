@@ -9,4 +9,6 @@ cleaning-transformation
 missing-value-analysis
 results
 interactive-component
+d3.js
+interactive-graph
 conclusion
