@@ -240,16 +240,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="missing-value-analysis" class="section level2 hasAnchor" number="3.3">
 <h2><span class="header-section-number">3.3</span> Missing value analysis<a href="data.html#missing-value-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="data.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;remotes&quot;</span>)</span></code></pre></div>
 <pre><code>## Error in install.packages : Updating loaded packages</code></pre>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="data.html#cb20-1" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;jtr13/redav&quot;</span>)</span>
-<span id="cb20-2"><a href="data.html#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;redav&quot;</span>)</span></code></pre></div>
 <pre><code>## Error in install.packages : Updating loaded packages</code></pre>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="data.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(redav)</span>
-<span id="cb22-2"><a href="data.html#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-3"><a href="data.html#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_missing</span>(data, <span class="at">percent =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-5-1.png" width="672" />
-Notice that there are three parts in the plotted graph.
+<p><img src="finalproj_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>Notice that there are three parts in the plotted graph.
 The top part shows the number of missing values in each column.
 The middle part presents the missing patterns and the right part shows the counts for each missing patterns.
 If there had been any missing values, it would have been displayed in the middle part of the graph and the top part would have shown the number of those missing values and the right part would have shown the counts for each missing patterns. But our data set doesn’t have any missing values so the graph is empty with num of rows missing and the row count of missing values being zero.</p>
