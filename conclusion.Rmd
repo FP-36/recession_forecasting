@@ -1,4 +1,18 @@
 # Conclusion
-Discuss: main takeaways of your exploration, limitations, future directions, lessons learned.
+
+From the exploration of various plots, we can conclude two things: 
+
+First is Unemployment Rate, Market Yield and Capacity Utilization, Manufacturing rates, and Industrial Production are directly correlating with recession periods. Specifically during recession years there are high unemployment rates. Capacity Utilization, Manufacturing and Industrial rates decrease during recession years. 
+
+Secondly, there are a few features which are strongly correlating.Explicitly, Industrial Production and  CPIAUCNS are positively correlated , market yield  on security at 10 and total monthly bill over 3 months are positively correlated and unemployment rate and Capacity Utilization and Manufacturing rates are negatively correlated. This correlation is expected because if unemployment is high manufacturing rates will have to go down. 
+
+Based on these observations, we can also construct a general argument that even though it seems CPIAUCNS is not related to recession from time-series, from correlation plots we can clearly see it is related to Industrial Production which in turn is related to recession. By transitivity, CPIAUCNS will also be related to recession in some sense. 
+
+Since we have features and recession relation, and feature interrelations, the next steps will be training a machine learning model which can predict recession. In order to do this, we can leverage the correlations  among the features we identified. Precisely, we can choose only one of the correlated features to train our model on. For example, UNRATE and CUMFNS help us deduce the same thing. So, only one of these two features is sufficient for identification.  
+
+One of the limitations of this exploration will be that currently only five features are being explored. However, there can be a few other features which can be taken into consideration such as ISM PMI Manufactoring: (The Institute of Supply Management (ISM)
+Manufacturing Purchasing Managers Index), 
+Personal Saving as % of disposable income: the data related to US personal saving ratio,
+Real Earnings and Real Dividend. There can be more features. 
 
 
