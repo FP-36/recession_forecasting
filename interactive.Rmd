@@ -10,4 +10,4 @@ D3 is often used in combination with other libraries and frameworks, such as Ang
 
 ## Interactive Graph
 
-[Link to VizHub visualization](https://vizhub.com/shubhambhalala/63d57ecbf5ab4ae2aa7b8b03f4e3869a), here is the link to the visualization created using d3.js and hosted on VizHub. You can scroll down a bit to find two buttons named "Next Year" & "Previous Year" wherein the actions are designed. On clicking Next Year if there was recession in the respective year a bar would appear in a transitive motion with a color change. 
+[Link to VizHub visualization](https://vizhub.com/shubhambhalala/63d57ecbf5ab4ae2aa7b8b03f4e3869a), here is the link to the visualization created using d3.js and hosted on VizHub. You can scroll down a bit to find two buttons named "Next Year" & "Previous Year" wherein the actions are designed. On clicking Next Year if there was recession in the respective year a bar would appear in a transitive motion with a color change, hence to see this transition you have to click Next Year for 14-15 times.
