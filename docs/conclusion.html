@@ -149,7 +149,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2" data-path="data.html"><a href="data.html#cleaning-transformation"><i class="fa fa-check"></i><b>3.2</b> Cleaning / transformation</a></li>
 <li class="chapter" data-level="3.3" data-path="data.html"><a href="data.html#missing-value-analysis"><i class="fa fa-check"></i><b>3.3</b> Missing value analysis</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>4</b> Results</a></li>
+<li class="chapter" data-level="4" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>4</b> Results</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="results.html"><a href="results.html#exploring-data-balancedness"><i class="fa fa-check"></i><b>4.1</b> Exploring Data balancedness</a></li>
+<li class="chapter" data-level="4.2" data-path="results.html"><a href="results.html#inspecting-feature-correlation"><i class="fa fa-check"></i><b>4.2</b> Inspecting feature correlation</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="results.html"><a href="results.html#identifying-correlated-features"><i class="fa fa-check"></i><b>4.2.1</b> Identifying correlated features</a></li>
+<li class="chapter" data-level="4.2.2" data-path="results.html"><a href="results.html#quantifying-the-correlations"><i class="fa fa-check"></i><b>4.2.2</b> Quantifying the correlations</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="results.html"><a href="results.html#identifying-factors-affecting-recession-using-time-series"><i class="fa fa-check"></i><b>4.3</b> Identifying factors affecting recession using Time Series</a></li>
+</ul></li>
 <li class="chapter" data-level="5" data-path="interactive-component.html"><a href="interactive-component.html"><i class="fa fa-check"></i><b>5</b> Interactive component</a>
 <ul>
 <li class="chapter" data-level="5.1" data-path="interactive-component.html"><a href="interactive-component.html#d3.js"><i class="fa fa-check"></i><b>5.1</b> D3.js</a></li>
@@ -177,7 +186,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="conclusion" class="section level1 hasAnchor" number="6">
 <h1><span class="header-section-number">Chapter 6</span> Conclusion<a href="conclusion.html#conclusion" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Discuss: main takeaways of your exploration, limitations, future directions, lessons learned.</p>
+<p>From the exploration of various plots, we can conclude two things:</p>
+<p>First is Unemployment Rate, Market Yield and Capacity Utilization, Manufacturing rates, and Industrial Production are directly correlating with recession periods. Specifically during recession years there are high unemployment rates. Capacity Utilization, Manufacturing and Industrial rates decrease during recession years.</p>
+<p>Secondly, there are a few features which are strongly correlating.Explicitly, Industrial Production and CPIAUCNS are positively correlated , market yield on security at 10 and total monthly bill over 3 months are positively correlated and unemployment rate and Capacity Utilization and Manufacturing rates are negatively correlated. This correlation is expected because if unemployment is high manufacturing rates will have to go down.</p>
+<p>Based on these observations, we can also construct a general argument that even though it seems CPIAUCNS is not related to recession from time-series, from correlation plots we can clearly see it is related to Industrial Production which in turn is related to recession. By transitivity, CPIAUCNS will also be related to recession in some sense.</p>
+<p>Since we have features and recession relation, and feature interrelations, the next steps will be training a machine learning model which can predict recession. In order to do this, we can leverage the correlations among the features we identified. Precisely, we can choose only one of the correlated features to train our model on. For example, UNRATE and CUMFNS help us deduce the same thing. So, only one of these two features is sufficient for identification.</p>
+<p>One of the limitations of this exploration will be that currently only five features are being explored. However, there can be a few other features which can be taken into consideration such as ISM PMI Manufactoring: (The Institute of Supply Management (ISM)
+Manufacturing Purchasing Managers Index),
+Personal Saving as % of disposable income: the data related to US personal saving ratio,
+Real Earnings and Real Dividend. There can be more features.</p>
 
 </div>
             </section>

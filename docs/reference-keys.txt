@@ -8,6 +8,11 @@ sources
 cleaning-transformation
 missing-value-analysis
 results
+exploring-data-balancedness
+inspecting-feature-correlation
+identifying-correlated-features
+quantifying-the-correlations
+identifying-factors-affecting-recession-using-time-series
 interactive-component
 d3.js
 interactive-graph

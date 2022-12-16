@@ -149,7 +149,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2" data-path="data.html"><a href="data.html#cleaning-transformation"><i class="fa fa-check"></i><b>3.2</b> Cleaning / transformation</a></li>
 <li class="chapter" data-level="3.3" data-path="data.html"><a href="data.html#missing-value-analysis"><i class="fa fa-check"></i><b>3.3</b> Missing value analysis</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>4</b> Results</a></li>
+<li class="chapter" data-level="4" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>4</b> Results</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="results.html"><a href="results.html#exploring-data-balancedness"><i class="fa fa-check"></i><b>4.1</b> Exploring Data balancedness</a></li>
+<li class="chapter" data-level="4.2" data-path="results.html"><a href="results.html#inspecting-feature-correlation"><i class="fa fa-check"></i><b>4.2</b> Inspecting feature correlation</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="results.html"><a href="results.html#identifying-correlated-features"><i class="fa fa-check"></i><b>4.2.1</b> Identifying correlated features</a></li>
+<li class="chapter" data-level="4.2.2" data-path="results.html"><a href="results.html#quantifying-the-correlations"><i class="fa fa-check"></i><b>4.2.2</b> Quantifying the correlations</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="results.html"><a href="results.html#identifying-factors-affecting-recession-using-time-series"><i class="fa fa-check"></i><b>4.3</b> Identifying factors affecting recession using Time Series</a></li>
+</ul></li>
 <li class="chapter" data-level="5" data-path="interactive-component.html"><a href="interactive-component.html"><i class="fa fa-check"></i><b>5</b> Interactive component</a>
 <ul>
 <li class="chapter" data-level="5.1" data-path="interactive-component.html"><a href="interactive-component.html#d3.js"><i class="fa fa-check"></i><b>5.1</b> D3.js</a></li>
@@ -177,10 +186,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="results" class="section level1 hasAnchor" number="4">
 <h1><span class="header-section-number">Chapter 4</span> Results<a href="results.html#results" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="results.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)</span></code></pre></div>
 <pre><code>## Error in install.packages : Updating loaded packages</code></pre>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="results.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(devtools)</span>
-<span id="cb25-2"><a href="results.html#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install_github</span>(<span class="st">&quot;ggobi/ggally&quot;</span>)</span></code></pre></div>
 <pre><code>## These packages have more recent versions available.
 ## It is recommended to update all of them.
 ## Which would you like to update?
@@ -205,9 +211,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 18: plyr       (1.8.7 -&gt; 1.8.8) [CRAN]
 ## 
 ##   
-   checking for file ‘/private/var/folders/gl/gc9370p92px37cdb3gs2xdrc0000gn/T/RtmpshbBiw/remotes8d3ed61bdd/ggobi-ggally-4d8fa81/DESCRIPTION’ ...
+   checking for file ‘/private/var/folders/gl/gc9370p92px37cdb3gs2xdrc0000gn/T/RtmpshbBiw/remotes8d36944d8b1/ggobi-ggally-4d8fa81/DESCRIPTION’ ...
   
-✔  checking for file ‘/private/var/folders/gl/gc9370p92px37cdb3gs2xdrc0000gn/T/RtmpshbBiw/remotes8d3ed61bdd/ggobi-ggally-4d8fa81/DESCRIPTION’
+✔  checking for file ‘/private/var/folders/gl/gc9370p92px37cdb3gs2xdrc0000gn/T/RtmpshbBiw/remotes8d36944d8b1/ggobi-ggally-4d8fa81/DESCRIPTION’
 ## 
   
 ─  preparing ‘GGally’:
@@ -219,7 +225,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ─  installing the package to process help pages
 ## 
   
-─  checking for LF line-endings in source and make files and shell scripts (3.4s)
+─  checking for LF line-endings in source and make files and shell scripts (3.3s)
 ## 
   
 ─  checking for empty or unneeded directories
@@ -232,139 +238,52 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   
    
 ## </code></pre>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="results.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;GGally&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## The downloaded binary packages are in
 ##  /var/folders/gl/gc9370p92px37cdb3gs2xdrc0000gn/T//RtmpshbBiw/downloaded_packages</code></pre>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="results.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;corrplot&quot;</span>)</span></code></pre></div>
 <pre><code>## Error in install.packages : Updating loaded packages</code></pre>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="results.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb31-2"><a href="results.html#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(GGally)</span>
-<span id="cb31-3"><a href="results.html#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb31-4"><a href="results.html#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb31-5"><a href="results.html#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)  </span>
-<span id="cb31-6"><a href="results.html#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(corrplot)</span></code></pre></div>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="results.html#cb32-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">factor</span>(data<span class="sc">$</span>USREC) </span>
-<span id="cb32-2"><a href="results.html#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(x)) <span class="sc">+</span> </span>
-<span id="cb32-3"><a href="results.html#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()<span class="sc">+</span></span>
-<span id="cb32-4"><a href="results.html#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Recession/ Non Recession Frequency&quot;</span>) <span class="sc">+</span>  <span class="fu">labs</span> (<span class="at">x =</span> <span class="st">&quot;Recession&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Count&quot;</span>)</span></code></pre></div>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-8-1.png" width="672" />
-To get an idea about the distribution of the target variable, i.e., USREC (US Recession), we decided to plot a bar plot of the same. The graph makes it clear that the data set is unbalanced. There are more than 100 data points with USREC= 1 and around 700 with USREC= 0. This graph indicates that while training a predictive model, we’ll need to do oversampling or undersampling to make the dataset balanced for training and prediction.</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="results.html#cb33-1" aria-hidden="true" tabindex="-1"></a>Recession <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data<span class="sc">$</span>USREC)</span>
-<span id="cb33-2"><a href="results.html#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggpairs</span>(data,<span class="at">legend =</span> <span class="dv">1</span>,<span class="at">columns=</span><span class="dv">2</span><span class="sc">:</span><span class="dv">7</span>,<span class="fu">aes</span>(<span class="at">color=</span> Recession, <span class="at">alpha =</span> <span class="fl">0.4</span>),</span>
-<span id="cb33-3"><a href="results.html#cb33-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">upper =</span> <span class="fu">list</span>(<span class="at">continuous =</span> <span class="st">&quot;blank&quot;</span>, <span class="at">combo =</span> <span class="st">&quot;box_no_facet&quot;</span>),</span>
-<span id="cb33-4"><a href="results.html#cb33-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">lower =</span> <span class="fu">list</span>(<span class="at">continuous =</span> <span class="fu">wrap</span>(<span class="st">&quot;points&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.3</span>,    <span class="at">size=</span><span class="fl">0.3</span>), </span>
-<span id="cb33-5"><a href="results.html#cb33-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">combo =</span> <span class="fu">wrap</span>(<span class="st">&quot;dot&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.4</span>,            <span class="at">size=</span><span class="fl">0.3</span>) ), <span class="at">title =</span> <span class="st">&quot;Correlation Between factors&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb33-6"><a href="results.html#cb33-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;right&quot;</span>)</span></code></pre></div>
+<div id="exploring-data-balancedness" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Exploring Data balancedness<a href="results.html#exploring-data-balancedness" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p>To get an idea about the distribution of the target variable, i.e., USREC (US Recession), we decided to plot a bar plot of the same. The graph makes it clear that the data set is unbalanced. There are more than 100 data points with USREC= 1 and around 700 with USREC= 0. This graph indicates that while training a predictive model, we’ll need to do oversampling or undersampling to make the dataset balanced for training and prediction.</p>
+</div>
+<div id="inspecting-feature-correlation" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Inspecting feature correlation<a href="results.html#inspecting-feature-correlation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="identifying-correlated-features" class="section level3 hasAnchor" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> Identifying correlated features<a href="results.html#identifying-correlated-features" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><img src="finalproj_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="results.html#cb34-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> data[ <span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>) ]</span>
-<span id="cb34-2"><a href="results.html#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-3"><a href="results.html#cb34-3" aria-hidden="true" tabindex="-1"></a>corrplot2 <span class="ot">&lt;-</span> <span class="cf">function</span>(data,</span>
-<span id="cb34-4"><a href="results.html#cb34-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>,</span>
-<span id="cb34-5"><a href="results.html#cb34-5" aria-hidden="true" tabindex="-1"></a>                      <span class="at">sig.level =</span> <span class="fl">0.05</span>,</span>
-<span id="cb34-6"><a href="results.html#cb34-6" aria-hidden="true" tabindex="-1"></a>                      <span class="at">order =</span> <span class="st">&quot;original&quot;</span>,</span>
-<span id="cb34-7"><a href="results.html#cb34-7" aria-hidden="true" tabindex="-1"></a>                      <span class="at">diag =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb34-8"><a href="results.html#cb34-8" aria-hidden="true" tabindex="-1"></a>                      <span class="at">type =</span> <span class="st">&quot;upper&quot;</span>,</span>
-<span id="cb34-9"><a href="results.html#cb34-9" aria-hidden="true" tabindex="-1"></a>                      <span class="at">tl.srt =</span> <span class="dv">90</span>,</span>
-<span id="cb34-10"><a href="results.html#cb34-10" aria-hidden="true" tabindex="-1"></a>                      <span class="at">number.font =</span> <span class="dv">1</span>,</span>
-<span id="cb34-11"><a href="results.html#cb34-11" aria-hidden="true" tabindex="-1"></a>                      <span class="at">number.cex =</span> <span class="dv">1</span>,</span>
-<span id="cb34-12"><a href="results.html#cb34-12" aria-hidden="true" tabindex="-1"></a>                      <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>)) {</span>
-<span id="cb34-13"><a href="results.html#cb34-13" aria-hidden="true" tabindex="-1"></a>  data_incomplete <span class="ot">&lt;-</span> data</span>
-<span id="cb34-14"><a href="results.html#cb34-14" aria-hidden="true" tabindex="-1"></a>  data <span class="ot">&lt;-</span> data[<span class="fu">complete.cases</span>(data), ]</span>
-<span id="cb34-15"><a href="results.html#cb34-15" aria-hidden="true" tabindex="-1"></a>  mat <span class="ot">&lt;-</span> <span class="fu">cor</span>(data, <span class="at">method =</span> method)</span>
-<span id="cb34-16"><a href="results.html#cb34-16" aria-hidden="true" tabindex="-1"></a>  cor.mtest <span class="ot">&lt;-</span> <span class="cf">function</span>(mat, method) {</span>
-<span id="cb34-17"><a href="results.html#cb34-17" aria-hidden="true" tabindex="-1"></a>    mat <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(mat)</span>
-<span id="cb34-18"><a href="results.html#cb34-18" aria-hidden="true" tabindex="-1"></a>    n <span class="ot">&lt;-</span> <span class="fu">ncol</span>(mat)</span>
-<span id="cb34-19"><a href="results.html#cb34-19" aria-hidden="true" tabindex="-1"></a>    p.mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="cn">NA</span>, n, n)</span>
-<span id="cb34-20"><a href="results.html#cb34-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">diag</span>(p.mat) <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb34-21"><a href="results.html#cb34-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>(n <span class="sc">-</span> <span class="dv">1</span>)) {</span>
-<span id="cb34-22"><a href="results.html#cb34-22" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> (j <span class="cf">in</span> (i <span class="sc">+</span> <span class="dv">1</span>)<span class="sc">:</span>n) {</span>
-<span id="cb34-23"><a href="results.html#cb34-23" aria-hidden="true" tabindex="-1"></a>        tmp <span class="ot">&lt;-</span> <span class="fu">cor.test</span>(mat[, i], mat[, j], <span class="at">method =</span> method)</span>
-<span id="cb34-24"><a href="results.html#cb34-24" aria-hidden="true" tabindex="-1"></a>        p.mat[i, j] <span class="ot">&lt;-</span> p.mat[j, i] <span class="ot">&lt;-</span> tmp<span class="sc">$</span>p.value</span>
-<span id="cb34-25"><a href="results.html#cb34-25" aria-hidden="true" tabindex="-1"></a>      }</span>
-<span id="cb34-26"><a href="results.html#cb34-26" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb34-27"><a href="results.html#cb34-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">colnames</span>(p.mat) <span class="ot">&lt;-</span> <span class="fu">rownames</span>(p.mat) <span class="ot">&lt;-</span> <span class="fu">colnames</span>(mat)</span>
-<span id="cb34-28"><a href="results.html#cb34-28" aria-hidden="true" tabindex="-1"></a>    p.mat</span>
-<span id="cb34-29"><a href="results.html#cb34-29" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb34-30"><a href="results.html#cb34-30" aria-hidden="true" tabindex="-1"></a>  p.mat <span class="ot">&lt;-</span> <span class="fu">cor.mtest</span>(data, <span class="at">method =</span> method)</span>
-<span id="cb34-31"><a href="results.html#cb34-31" aria-hidden="true" tabindex="-1"></a>  col <span class="ot">&lt;-</span> <span class="fu">colorRampPalette</span>(<span class="fu">c</span>(<span class="st">&quot;#BB4444&quot;</span>, <span class="st">&quot;#EE9988&quot;</span>, <span class="st">&quot;#FFFFFF&quot;</span>, <span class="st">&quot;#77AADD&quot;</span>, <span class="st">&quot;#4477AA&quot;</span>))</span>
-<span id="cb34-32"><a href="results.html#cb34-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">corrplot</span>(mat,</span>
-<span id="cb34-33"><a href="results.html#cb34-33" aria-hidden="true" tabindex="-1"></a>           <span class="at">method =</span> <span class="st">&quot;color&quot;</span>, <span class="at">col =</span> <span class="fu">col</span>(<span class="dv">200</span>), <span class="at">number.font =</span> number.font,</span>
-<span id="cb34-34"><a href="results.html#cb34-34" aria-hidden="true" tabindex="-1"></a>           <span class="at">mar =</span> mar, <span class="at">number.cex =</span> number.cex,</span>
-<span id="cb34-35"><a href="results.html#cb34-35" aria-hidden="true" tabindex="-1"></a>           <span class="at">type =</span> type, <span class="at">order =</span> order,</span>
-<span id="cb34-36"><a href="results.html#cb34-36" aria-hidden="true" tabindex="-1"></a>           <span class="at">addCoef.col =</span> <span class="st">&quot;black&quot;</span>, <span class="co"># add correlation coefficient</span></span>
-<span id="cb34-37"><a href="results.html#cb34-37" aria-hidden="true" tabindex="-1"></a>           <span class="at">tl.col =</span> <span class="st">&quot;black&quot;</span>, <span class="at">tl.srt =</span> tl.srt, <span class="co"># rotation of text labels</span></span>
-<span id="cb34-38"><a href="results.html#cb34-38" aria-hidden="true" tabindex="-1"></a>           <span class="co"># combine with significance level</span></span>
-<span id="cb34-39"><a href="results.html#cb34-39" aria-hidden="true" tabindex="-1"></a>           <span class="at">p.mat =</span> p.mat, <span class="at">sig.level =</span> sig.level, <span class="at">insig =</span> <span class="st">&quot;blank&quot;</span>,</span>
-<span id="cb34-40"><a href="results.html#cb34-40" aria-hidden="true" tabindex="-1"></a>           <span class="co"># hide correlation coefficients on the diagonal</span></span>
-<span id="cb34-41"><a href="results.html#cb34-41" aria-hidden="true" tabindex="-1"></a>           <span class="at">diag =</span> diag</span>
-<span id="cb34-42"><a href="results.html#cb34-42" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb34-43"><a href="results.html#cb34-43" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb34-44"><a href="results.html#cb34-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-45"><a href="results.html#cb34-45" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot2</span>(</span>
-<span id="cb34-46"><a href="results.html#cb34-46" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> df,</span>
-<span id="cb34-47"><a href="results.html#cb34-47" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>,</span>
-<span id="cb34-48"><a href="results.html#cb34-48" aria-hidden="true" tabindex="-1"></a>  <span class="at">sig.level =</span> <span class="fl">0.05</span>,</span>
-<span id="cb34-49"><a href="results.html#cb34-49" aria-hidden="true" tabindex="-1"></a>  <span class="at">order =</span> <span class="st">&quot;original&quot;</span>,</span>
-<span id="cb34-50"><a href="results.html#cb34-50" aria-hidden="true" tabindex="-1"></a>  <span class="at">diag =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb34-51"><a href="results.html#cb34-51" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">&quot;upper&quot;</span>,</span>
-<span id="cb34-52"><a href="results.html#cb34-52" aria-hidden="true" tabindex="-1"></a>  <span class="at">tl.srt =</span> <span class="dv">75</span>,</span>
-<span id="cb34-53"><a href="results.html#cb34-53" aria-hidden="true" tabindex="-1"></a>  ) </span></code></pre></div>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="results.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggparcoord</span>(data, <span class="at">columns =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">8</span>, <span class="at">groupColumn=</span><span class="dv">8</span>, <span class="at">alphaLines =</span> .<span class="dv">1</span>, <span class="at">scale =</span> <span class="st">&quot;uniminmax&quot;</span>, </span>
-<span id="cb35-2"><a href="results.html#cb35-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">mapping=</span><span class="fu">aes</span>(<span class="at">color=</span><span class="fu">as.factor</span>(USREC)))<span class="sc">+</span></span>
-<span id="cb35-3"><a href="results.html#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_discrete</span>(<span class="st">&quot;USREC&quot;</span>)<span class="sc">+</span></span>
-<span id="cb35-4"><a href="results.html#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Parallel plot of different variables&quot;</span>) </span></code></pre></div>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-11-1.png" width="672" />
-To compare multiple variables or features simultaneously, we are using parallel plots which gives a quick and intuitive comparison of the relationships between the different variables. The first observation points towards unbalnced nature of the datset that there are a lot more red lines than blue lines.
+<p>To compare multiple variables or features simultaneously, we are using parallel plots which gives a quick and intuitive comparison of the relationships between the different variables. The first observation points towards unbalnced nature of the datset that there are a lot more red lines than blue lines.
 USREC is the target variable hence it has only two values 0 and 1.
 This parallel plot shows that the features ‘UNRATE’ and ‘CUMFNS’ are negatively correlated.
 ‘INDPRO’ and ‘CPIAUCNS’ are positively correlated as there are parallel lines in between them.
-Also the correlation between other variables which are not adjacent to each other in parallel plot can be further examined using pairplot or correlation plot.</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="results.html#cb36-1" aria-hidden="true" tabindex="-1"></a>recession_dates <span class="ot">&lt;-</span> <span class="fu">filter</span>(data, USREC <span class="sc">==</span> <span class="st">&quot;1&quot;</span>)</span>
-<span id="cb36-2"><a href="results.html#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-3"><a href="results.html#cb36-3" aria-hidden="true" tabindex="-1"></a>recession_years <span class="ot">&lt;-</span> <span class="fu">unique</span>(lubridate<span class="sc">::</span><span class="fu">year</span>(<span class="fu">as.Date</span>(recession_dates<span class="sc">$</span>DATE)))</span>
-<span id="cb36-4"><a href="results.html#cb36-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-5"><a href="results.html#cb36-5" aria-hidden="true" tabindex="-1"></a>data_copy <span class="ot">&lt;-</span> data</span>
-<span id="cb36-6"><a href="results.html#cb36-6" aria-hidden="true" tabindex="-1"></a>data_copy<span class="sc">$</span>USREC <span class="ot">&lt;-</span> data_copy<span class="sc">$</span>USREC <span class="sc">*</span> <span class="dv">100</span></span>
-<span id="cb36-7"><a href="results.html#cb36-7" aria-hidden="true" tabindex="-1"></a>data_copy<span class="sc">$</span>DATE <span class="ot">&lt;-</span> lubridate<span class="sc">::</span><span class="fu">year</span>(<span class="fu">as.Date</span>(data_copy<span class="sc">$</span>DATE))</span>
-<span id="cb36-8"><a href="results.html#cb36-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-9"><a href="results.html#cb36-9" aria-hidden="true" tabindex="-1"></a>tidy_data <span class="ot">&lt;-</span> data_copy <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span><span class="fu">c</span>(<span class="st">&quot;DATE&quot;</span>,<span class="st">&quot;USREC&quot;</span>), <span class="at">names_to =</span> <span class="st">&quot;Factors&quot;</span>) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">Factors =</span> forcats<span class="sc">::</span><span class="fu">fct_reorder2</span>(Factors,DATE, value))</span>
-<span id="cb36-10"><a href="results.html#cb36-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-11"><a href="results.html#cb36-11" aria-hidden="true" tabindex="-1"></a>ggp <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(tidy_data, <span class="fu">aes</span>(DATE, value, <span class="at">color =</span> Factors)) <span class="sc">+</span></span>
-<span id="cb36-12"><a href="results.html#cb36-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb36-13"><a href="results.html#cb36-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Factors and Recession Relation&quot;</span>) <span class="sc">+</span>  <span class="fu">labs</span> (<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Value&quot;</span>) <span class="sc">+</span></span>
-<span id="cb36-14"><a href="results.html#cb36-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_grey</span>(<span class="dv">16</span>) <span class="sc">+</span></span>
-<span id="cb36-15"><a href="results.html#cb36-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.title =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>,<span class="dv">5</span>)) </span>
-<span id="cb36-16"><a href="results.html#cb36-16" aria-hidden="true" tabindex="-1"></a>ggp <span class="sc">+</span>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> recession_years, <span class="at">alpha =</span> <span class="fl">0.2</span>) </span></code></pre></div>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-13-1.png" width="672" />
-Till now, we were able to figure out the relationships between the factors which may potentially be responsible for the recession. With the help of this time series, we will attempt to identify if there is a pattern between features and recession. To identify this, we have plotted a time series graph over a series of years and there is a vertical line on the years during which there was recession.</p>
+Also the correlation between other variables which are not adjacent to each other in parallel plot can be further examined using pairplot and correlation plot.</p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p>To further explore the relations indicated by the Parallel Plots, we plot a pair plot to further analyze the correlation among the variables. Clearly we can see that there is a strong positive correlation between INDPRO and CPIAUCNS, TB3MS and GS10, and a negative correlation between UNRATE and CUMFNS. However, there is no way to interpret if there is a correlation with Recession. For this reason we can ignore color coding for now (and more pink plots are expected as our data has more non-recession). We will explore that later with the help of time series. For now we can just confirm the correlations we explored from the pair plot using a correlation plot.</p>
+</div>
+<div id="quantifying-the-correlations" class="section level3 hasAnchor" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> Quantifying the correlations<a href="results.html#quantifying-the-correlations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p>For quantifying the correlations, we used Pearson coefficient of correlation.
+The Pearson correlation coefficient, also known as the Pearson’s r, is a measure of the linear relationship between two variables. It is a measure of the strength and direction of the relationship between the two variables, and it ranges from -1 to 1.When one variable changes, the other variable changes in the same direction.
+From the correlation plot, we can confirm that INDPRO and CPIAUCNS are indeed highly positively correlated with 0.97 correlation coefficient. Also, TB3MS and GS10 are positively correlated with correlation coefficient of 0.93. UNRATE and CUMFNS has a correlation coefficient of -0.66 hence as predicted earlier, they are negatively correlated.
+Apart from this, we can also see that UNRATE and INDPRO are not correlated at all. CUMFNS is negatively correlated with INDPRO and CPIAUCNS. All other features don’t have significant correlation in between them.</p>
+</div>
+</div>
+<div id="identifying-factors-affecting-recession-using-time-series" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Identifying factors affecting recession using Time Series<a href="results.html#identifying-factors-affecting-recession-using-time-series" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<p>Till now, we were able to figure out the relationships between the factors which may potentially be responsible for the recession. With the help of this time series, we will attempt to identify if there is a pattern between features and recession. To identify this, we have plotted a time series graph over a series of years and there is a vertical line on the years during which there was recession.</p>
 <p>One clear feature is CUMFNS which decreases during recession years because whenever there is a vertical line indicating a recession the CUMFNS is decreasing.This logically makes sense because CUMFNS stands capacity utilization which ideally should reduce during a recession.</p>
 <p>Second clear feature is INDPRO stands for Industrial Production. Over the years it has increased but during the recession years it has dropped (on vertical lines, it decreases).</p>
 <p>Since we cannot conclude much for the Factors GS10, UNRATE and TB3MS, we analyze them next using three different time series.</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="results.html#cb37-1" aria-hidden="true" tabindex="-1"></a>recession_dates <span class="ot">&lt;-</span> <span class="fu">filter</span>(data, USREC <span class="sc">==</span> <span class="st">&quot;1&quot;</span>)</span>
-<span id="cb37-2"><a href="results.html#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-3"><a href="results.html#cb37-3" aria-hidden="true" tabindex="-1"></a>recession_years <span class="ot">&lt;-</span> <span class="fu">unique</span>(lubridate<span class="sc">::</span><span class="fu">year</span>(<span class="fu">as.Date</span>(recession_dates<span class="sc">$</span>DATE)))</span>
-<span id="cb37-4"><a href="results.html#cb37-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-5"><a href="results.html#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_copy, </span>
-<span id="cb37-6"><a href="results.html#cb37-6" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(DATE, GS10)) <span class="sc">+</span> </span>
-<span id="cb37-7"><a href="results.html#cb37-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb37-8"><a href="results.html#cb37-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Year Rate from 1950 to 2022&quot;</span>)<span class="sc">+</span>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> recession_years, <span class="at">alpha =</span> <span class="fl">0.2</span>) </span></code></pre></div>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-14-1.png" width="672" />
-GS10 is market yield on security at 10 years. Intuitively, it should decrease during recession. This hypothesis is weakly supported by the graph as in general during recession years the GS10 goes down. However, it is not always the case from the time series. There are instances where the rate drops but it is not classified as recession, and there are few drops which are not that huge but that has happened during recession. So, overall this time-series is not much helpful for GS10 study and recession. However, we can use correlation graphs made earlier to find an indirect relation and use that instead of GS10. We talk more about this in the conclusion section.</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="results.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_copy, </span>
-<span id="cb38-2"><a href="results.html#cb38-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(DATE, UNRATE)) <span class="sc">+</span> </span>
-<span id="cb38-3"><a href="results.html#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb38-4"><a href="results.html#cb38-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Unemployment rate from 1950 to 2022&quot;</span>)<span class="sc">+</span><span class="fu">geom_vline</span>(<span class="at">xintercept =</span> recession_years, <span class="at">alpha =</span> <span class="fl">0.2</span>) </span></code></pre></div>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-15-1.png" width="672" />
-It can be deciphered that Unemployment and Recession go hand in hand because whenever there is rising unemployment there is a recession. Another important thing to notice is after a recession the drop in the unemployment rate is slow. However, during recession years there is a sudden increase. For instance, years leading to 1970 have a dropping unemployment rate and then in 1970 there is a sudden increase. This pattern repeats during every recession year(s) another notable instance is the period right before 2010.</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="results.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_copy, </span>
-<span id="cb39-2"><a href="results.html#cb39-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(DATE, TB3MS)) <span class="sc">+</span> </span>
-<span id="cb39-3"><a href="results.html#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span><span class="fu">geom_vline</span>(<span class="at">xintercept =</span> recession_years, <span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
-<span id="cb39-4"><a href="results.html#cb39-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Months bill from 1950 to 2022&quot;</span>)</span></code></pre></div>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-16-1.png" width="672" />
-We can see a weak relation between Monthly bills and recession. In general it appears that whenever there is a sudden drop in monthly bills value by high numbers, then there happens to be a recession. Although there are drops in years where there is no recession, the amount of drop during recession years is significant. So, if there is a significant drop over a very short time, there are chances of that time being a recession. However, this is a weak relationship because there are years where bills have increased during recession. One of the possible reasons for this discrepancy is the vertical lines are made based on x-intercepts which are discrete variables as it is year. However, the time series is actually based on dates so there are multiple points for the same year. So, if there is some pattern we cannot really identify that. For this reason, we say that this is a weak relation.</p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p>GS10 is market yield on security at 10 years. Intuitively, it should decrease during recession. This hypothesis is weakly supported by the graph as in general during recession years the GS10 goes down. However, it is not always the case from the time series. There are instances where the rate drops but it is not classified as recession, and there are few drops which are not that huge but that has happened during recession. So, overall this time-series is not much helpful for GS10 study and recession. However, we can use correlation graphs made earlier to find an indirect relation and use that instead of GS10. We talk more about this in the conclusion section.</p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<p>It can be deciphered that Unemployment and Recession go hand in hand because whenever there is rising unemployment there is a recession. Another important thing to notice is after a recession the drop in the unemployment rate is slow. However, during recession years there is a sudden increase. For instance, years leading to 1970 have a dropping unemployment rate and then in 1970 there is a sudden increase. This pattern repeats during every recession year(s). Another notable instance is the period right before 2010.</p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p>We can see a weak relation between Monthly bills and recession. In general it appears that whenever there is a sudden drop in monthly bills value by high numbers, then there happens to be a recession. Although there are drops in years where there is no recession, the amount of drop during recession years is significant. So, if there is a significant drop over a very short time, there are chances of that time being a recession. However, this is a weak relationship because there are years where bills have increased during recession. One of the possible reasons for this discrepancy is the vertical lines are made based on x-intercepts which are discrete variables as it is year. However, the time series is actually based on dates so there are multiple points for the same year. So, if there is some pattern we cannot really identify that. For this reason, we say that this is a weak relation.</p>
 
+</div>
 </div>
             </section>
 
